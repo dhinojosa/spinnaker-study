@@ -5,7 +5,7 @@ node {
 		//git "https://github.com/dhinojosa/quarkus-microservice.git"
 	}
 	stage('Build Project') {
-      sh './mvnw target'
+      sh './mvnw package'
 	}
 	stage('Build Container') {
 		docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
