@@ -1,6 +1,7 @@
 node {
 	stage('Checkout') {
-		sh "Url is ${GIT_URL}"
+		sh "All environment variables ${env}"
+		sh "Url is ${env.GIT_URL}"
 		//git "${env.GIT_URL}"
 	}
 	stage('Build Container') {
