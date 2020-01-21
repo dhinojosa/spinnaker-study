@@ -54,4 +54,4 @@ metadata:
 spec:
   backend:
     serviceName: teama-microservice-service
-    servicePort: 80
+    servicePort: 8080
