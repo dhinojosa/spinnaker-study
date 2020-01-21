@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: teama-microservice
-        run: simple-microservice
+        run: teama-microservice
     spec:
       containers:
         - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
