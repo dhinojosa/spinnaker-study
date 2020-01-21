@@ -36,8 +36,7 @@ metadata:
   namespace: microservices
 spec:
   selector:
-    source: demo
-    app: spinnaker
+    app: teama-microservice
   ports:
   - protocol: TCP
     port: 30201
