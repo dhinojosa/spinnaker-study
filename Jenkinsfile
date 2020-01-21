@@ -1,6 +1,6 @@
 node {
 	stage('Checkout') {
-		git '${GIT_URL}'
+		git "${env.GIT_URL}"
 	}
 	stage('Build Container') {
 		docker.build('${JOB_NAME}', './src/main/docker/Dockerfile.jvm')
