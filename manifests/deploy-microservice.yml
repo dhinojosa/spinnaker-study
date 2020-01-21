@@ -42,7 +42,7 @@ spec:
   ports:
   - protocol: TCP
     port: 30201
-    targetPort: 80
+    targetPort: 8080
 
 ---
 
