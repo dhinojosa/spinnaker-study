@@ -4,6 +4,7 @@ metadata:
   labels:
     app: teama-microservice
     stack: frontend
+    run: teama-microservice
   name: teama-microservice
   namespace: microservices
 spec:
@@ -47,7 +48,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: simple-ingress
+  name: teama-ingress
   namespace: microservices
 spec:
   backend:
