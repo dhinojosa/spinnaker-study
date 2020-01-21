@@ -13,6 +13,7 @@ node {
 	stage('Push to ECR') {
 		docker.withRegistry('https://219099013464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:spinnaker-admin-aws') {
 			docker.image('${JOB_NAME}').push('${BUILD_ID}')
+			docker.image('${JOB_NAME}').push('latest')
 	   }
 	}
 }
