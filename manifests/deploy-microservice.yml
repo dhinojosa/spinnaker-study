@@ -2,24 +2,24 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   labels:
-    app: quarkus-microservice
+    app: teama-microservice
     stack: frontend
-  name: quarkus-microservice
+  name: teama-microservice
   namespace: microservices
 spec:
   replicas: 3
   selector:
     matchLabels:
-      run: quarkus-microservice
+      run: teama-microservice
   template:
     metadata:
       labels:
-        app: quarkus-microservice
+        app: teama-microservice
         run: simple-microservice
     spec:
       containers:
-        - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/quarkus-microservice
-          name: quarkus-microservice
+        - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
+          name: teama-microservice
           ports:
             - containerPort: 80
           readinessProbe:
@@ -31,7 +31,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: quarkus-microservice-service
+  name: teama-microservice-service
   namespace: microservices
 spec:
   selector:
@@ -51,5 +51,5 @@ metadata:
   namespace: microservices
 spec:
   backend:
-    serviceName: quarkus-microservice-service
+    serviceName: teama-microservice-service
     servicePort: 80
