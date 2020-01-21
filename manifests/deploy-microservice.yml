@@ -4,7 +4,7 @@ metadata:
   labels:
     app: teama-microservice
     stack: frontend
-    run: teama-microservice
+    source: demo
   name: teama-microservice
   namespace: microservices
 spec:
@@ -17,6 +17,7 @@ spec:
       labels:
         app: teama-microservice
         run: teama-microservice
+        source: demo
     spec:
       containers:
         - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
@@ -36,6 +37,7 @@ metadata:
   namespace: microservices
 spec:
   selector:
+    source: demo
     app: teama-microservice
   ports:
   - protocol: TCP
