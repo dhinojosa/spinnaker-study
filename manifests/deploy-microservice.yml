@@ -23,11 +23,11 @@ spec:
         - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
           name: teama-microservice
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           readinessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 8080
 ---
 
 kind: Service
