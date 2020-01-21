@@ -3,3 +3,4 @@
 target/
 .Jenkinsfile.swp
 manifests/.deploy-microservice.yml.swp
+**/*.swp
