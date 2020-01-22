@@ -5,7 +5,7 @@ node {
 		//git "https://github.com/dhinojosa/quarkus-microservice.git"
 	}
 	stage('Build Project') {
-      sh './mvnw package -Dquarkus.http.root-path=teama'
+      sh './mvnw package -Dquarkus.http.root-path=/teama'
 	}
 	stage('Build Container') {
 		docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
