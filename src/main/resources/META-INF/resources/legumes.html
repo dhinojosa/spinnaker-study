@@ -23,7 +23,7 @@
         function _refreshPageData() {
           $http({
             method: 'GET',
-            url: '/legumes'
+            url: 'legumes'
           }).then(function successCallback(response) {
             $scope.legumes = response.data;
           }, function errorCallback(response) {
