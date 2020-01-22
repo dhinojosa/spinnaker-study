@@ -20,7 +20,7 @@ public class PrimeNumberChecker {
     @Produces("text/plain")
     @Counted(name = "performedChecks", description = "How many primality checks have been performed.")
     @Timed(name = "checksTimer", description = "A measure of how long it takes to perform the primality test.", unit = MetricUnits.MILLISECONDS)
-    public String checkIfPrime(@PathParam("number") long number) {
+    public String checkIfPrime(@PathParam long number) {
 
         System.out.println("What?" + number);
 
