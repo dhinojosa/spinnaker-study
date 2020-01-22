@@ -1,8 +1,6 @@
 node {
 	stage('Checkout') {
 		checkout scm
-		//sh "Url is ${env.GIT_URL}"
-		//git "https://github.com/dhinojosa/quarkus-microservice.git"
 	}
 	stage('Build Project') {
       sh './mvnw clean package'
