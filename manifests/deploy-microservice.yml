@@ -52,6 +52,10 @@ metadata:
   name: teama-ingress
   namespace: microservices
 spec:
-  backend:
-    serviceName: teama-microservice-service
-    servicePort: 8080
+  rules:
+    - http:
+         paths:
+           - path: /teama-microservice-service
+             backend:
+               serviceName: teama-microservice-service
+               servicePort: 80
