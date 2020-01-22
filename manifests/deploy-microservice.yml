@@ -24,10 +24,6 @@ spec:
           name: teama-microservice
           ports:
             - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: /teama
-              port: 8080
 ---
 
 kind: Service
