@@ -58,18 +58,4 @@ spec:
                serviceName: teama-microservice-service
                servicePort: 30201
 
----
 
-#Used for prometheus, turns on monitoring for this application
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-    name: teama-service-monitor
-    labels:
-        team: frontend
-spec:
-    selector:
-        matchLabels:
-            app: teama-microservice
-    endpoints:
-        - port: web
