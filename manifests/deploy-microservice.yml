@@ -1,61 +1,65 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  labels:
-    app: teama-microservice
-    stack: frontend
-    source: demo
-  name: teama-microservice
-  namespace: microservices
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      run: teama-microservice
-  template:
-    metadata:
-      labels:
+    labels:
         app: teama-microservice
-        run: teama-microservice
+        stack: frontend
         source: demo
-    spec:
-      containers:
-        - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
-          name: teama-microservice
-          ports:
-            - containerPort: 8080
+    name: teama-microservice
+    namespace: microservices
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            run: teama-microservice
+    template:
+        metadata:
+            labels:
+                app: teama-microservice
+                run: teama-microservice
+                source: demo
+        spec:
+            containers:
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
+                    name: teama-microservice
+                    ports:
+                        -   name: web
+                            containerPort: 8080
 ---
 
 kind: Service
 apiVersion: v1
 metadata:
-  name: teama-microservice-service
-  namespace: microservices
+    labels:
+        app: teama-microservice-service
+    name: teama-microservice-service
+    namespace: microservices
 spec:
-  selector:
-    source: demo
-    app: teama-microservice
-  ports:
-  - protocol: TCP
-    port: 30201
-    targetPort: 8080
+    selector:
+        source: demo
+        app: teama-microservice
+    ports:
+        -   name: web
+            protocol: TCP
+            port: 30201
+            targetPort: 8080
 
 ---
 
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /$2
-  name: teama-ingress
-  namespace: microservices
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$2
+    name: teama-ingress
+    namespace: microservices
 spec:
-  rules:
-    - http:
-         paths:
-           - path: /teama(/|$)(.*)
-             backend:
-               serviceName: teama-microservice-service
-               servicePort: 30201
+    rules:
+        -   http:
+                paths:
+                    -   path: /teama(/|$)(.*)
+                        backend:
+                            serviceName: teama-microservice-service
+                            servicePort: 30201
 
 
