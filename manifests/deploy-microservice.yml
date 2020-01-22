@@ -46,14 +46,14 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-      nginx.ingress.kubernetes.io/app-root: /teama
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
   name: teama-ingress
   namespace: microservices
 spec:
   rules:
     - http:
          paths:
-           - path: /
+           - path: /teama(/|$)(.*)
              backend:
                serviceName: teama-microservice-service
                servicePort: 30201
