@@ -12,6 +12,9 @@ node {
        sh 'tar -czvf quarkus-microservice-chart.tar.gz -C helm quarkus-microservice'
        archiveArtifacts artifacts: 'quarkus-microservice-chart.tar.gz', fingerprint: true
 	}
+	stage('Push chart to S3') {
+	    s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'charts', path:'/quarkus-microservice-chart.tar.gz')
+	}
 	stage('Write properties') {
 	   sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
 	}
