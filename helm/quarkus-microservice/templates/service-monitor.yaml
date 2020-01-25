@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+    labels:
+        release: lasertag
+    name: {{.Release.Name}}-microservice-service-monitor
+spec:
+    endpoints:
+        - interval: 30s
+          path: /metrics
+          port: web
+    namespaceSelector:
+        matchNames:
+            - microservices
+    selector:
+        matchLabels:
+            app: {{.Release.Name}}-microservice-service
