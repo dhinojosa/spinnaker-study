@@ -9,7 +9,7 @@ node {
 		docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
 	}
 	stage('Create tar.gz') {
-       sh 'tar -czvf quarkus-microservice-chart.tar.gz helm/quarkus-microservice'
+       sh 'tar -czvf quarkus-microservice-chart.tar.gz -C helm quarkus-microservice'
        archiveArtifacts artifacts: 'quarkus-microservice-chart.tar.gz', fingerprint: true
 	}
 	stage('Push to ECR') {
