@@ -12,6 +12,9 @@ node {
        sh 'tar -czvf quarkus-microservice-chart.tar.gz -C helm quarkus-microservice'
        archiveArtifacts artifacts: 'quarkus-microservice-chart.tar.gz', fingerprint: true
 	}
+	stage('Write properties') {
+	   sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
+	}
 	stage('Push to ECR') {
 		docker.withRegistry('https://219099013464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:spinnaker-admin-aws') {
 			docker.image('${JOB_NAME}').push('${BUILD_ID}')
