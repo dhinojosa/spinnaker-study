@@ -13,7 +13,7 @@ node {
        archiveArtifacts artifacts: 'quarkus-microservice-chart.tar.gz', fingerprint: true
 	}
 	stage('Push chart to S3') {
-	    withAWS(credentials:'spinnaker-admin-aws') {
+	    withAWS(region:'us-west-2', credentials:'spinnaker-admin-aws') {
           s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'charts', path:'/quarkus-microservice-chart.tar.gz')
         }
 	}
