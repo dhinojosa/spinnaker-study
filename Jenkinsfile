@@ -21,6 +21,7 @@ node {
 	    sh "> spinnaker.properties"
 	    sh "echo 'JOB_NAME=${JOB_NAME}' >> spinnaker.properties"
 	    sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
+	    archiveArtifacts artifacts: 'spinnaker.properties', fingerprint: true
 	}
 	stage('Push to ECR') {
 		docker.withRegistry('https://219099013464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:spinnaker-admin-aws') {
