@@ -3,6 +3,7 @@ kind: ServiceMonitor
 metadata:
     labels:
         release: lasertag
+        scope: {{.Values.releaseType}}
     name: {{.Release.Name}}-microservice-service-monitor
 spec:
     endpoints:
