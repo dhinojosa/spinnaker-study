@@ -10,6 +10,8 @@ spec:
         - interval: 30s
           path: /metrics
           port: web
+    targetLabels:
+        - release
     namespaceSelector:
         matchNames:
             - microservices
