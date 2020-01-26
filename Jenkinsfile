@@ -18,6 +18,7 @@ node {
         }
 	}
 	stage('Write properties') {
+	    sh "> spinnaker.properties"
 	    sh "echo 'JOB_NAME=${JOB_NAME}' >> spinnaker.properties"
 	    sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
 	}
