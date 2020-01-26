@@ -14,11 +14,12 @@ node {
 	}
 	stage('Push chart to S3') {
 	    withAWS(region:'us-west-2', credentials:'spinnaker-admin-aws') {
-          s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'helm-charts-f2bba284-98d3-445b-9f04-a08c57b7d36e', path:'/quarkus-microservice-chart.tar.gz')
+          s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'helm-charts-f2bba284-98d3-445b-9f04-a08c57b7d36e', path:'${JOB-NAME}/${BUILD_ID}/quarkus-microservice-chart.tar.gz')
         }
 	}
 	stage('Write properties') {
-	   sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
+	    sh "echo 'JOB_NAME=${JOB_NAME}' >> spinnaker.properties"
+	    sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
 	}
 	stage('Push to ECR') {
 		docker.withRegistry('https://219099013464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:spinnaker-admin-aws') {
