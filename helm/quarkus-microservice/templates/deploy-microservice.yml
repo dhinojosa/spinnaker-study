@@ -4,6 +4,7 @@ metadata:
     labels:
         app: {{.Release.Name}}-microservice
         release: {{.Values.releaseType}}
+        version: {{.Values.tag}}
         stack: frontend
         source: demo
     name: {{.Release.Name}}-microservice
@@ -39,6 +40,7 @@ metadata:
     labels:
         app: {{.Release.Name}}-microservice-service
         release: {{.Values.releaseType}}
+        version: {{.Values.tag}}
     name: {{.Release.Name}}-microservice-service
     namespace: microservices
 spec:
@@ -57,6 +59,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
     annotations:
+        version: {{.Values.tag}}
         nginx.ingress.kubernetes.io/rewrite-target: /$2
     name: {{.Release.Name}}-ingress
     namespace: microservices
