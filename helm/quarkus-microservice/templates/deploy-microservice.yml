@@ -4,7 +4,7 @@ metadata:
     labels:
         app: {{.Release.Name}}-microservice
         release: {{.Values.releaseType}}
-        version: {{.Values.tag}}
+        version: "{{.Values.tag}}"
         stack: frontend
         source: demo
     name: {{.Release.Name}}-microservice
