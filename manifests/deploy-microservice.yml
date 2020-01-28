@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: teama-microservice
+        app: arbitrary-oppertunity-microservice
         stack: frontend
         source: demo
-    name: teama-microservice
+    name: arbitrary-oppertunity-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: teama-microservice
+            run: arbitrary-oppertunity-microservice
     template:
         metadata:
             labels:
-                app: teama-microservice
-                run: teama-microservice
+                app: arbitrary-oppertunity-microservice
+                run: arbitrary-oppertunity-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
-                    name: teama-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/arbitrary-oppertunity-microservice
+                    name: arbitrary-oppertunity-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: teama-microservice-service
-    name: teama-microservice-service
+        app: arbitrary-oppertunity-microservice-service
+    name: arbitrary-oppertunity-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: teama-microservice
+        app: arbitrary-oppertunity-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,13 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: teama-ingress
+    name: arbitrary-oppertunity-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /teama(/|$)(.*)
+                    -   path: /arbitrary-oppertunity(/|$)(.*)
                         backend:
-                            serviceName: teama-microservice-service
+                            serviceName: arbitrary-oppertunity-microservice-service
                             servicePort: 30201
-
-
