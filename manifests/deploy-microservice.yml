@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: arbitrary-oppertunity-microservice
+        app: arbitrary-opportunity-microservice
         stack: frontend
         source: demo
-    name: arbitrary-oppertunity-microservice
+    name: arbitrary-opportunity-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: arbitrary-oppertunity-microservice
+            run: arbitrary-opportunity-microservice
     template:
         metadata:
             labels:
-                app: arbitrary-oppertunity-microservice
-                run: arbitrary-oppertunity-microservice
+                app: arbitrary-opportunity-microservice
+                run: arbitrary-opportunity-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/arbitrary-oppertunity-microservice
-                    name: arbitrary-oppertunity-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/arbitrary-opportunity-microservice
+                    name: arbitrary-opportunity-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: arbitrary-oppertunity-microservice-service
-    name: arbitrary-oppertunity-microservice-service
+        app: arbitrary-opportunity-microservice-service
+    name: arbitrary-opportunity-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: arbitrary-oppertunity-microservice
+        app: arbitrary-opportunity-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,13 +51,13 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: arbitrary-oppertunity-ingress
+    name: arbitrary-opportunity-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /arbitrary-oppertunity(/|$)(.*)
+                    -   path: /arbitrary-opportunity(/|$)(.*)
                         backend:
-                            serviceName: arbitrary-oppertunity-microservice-service
+                            serviceName: arbitrary-opportunity-microservice-service
                             servicePort: 30201
