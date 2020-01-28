@@ -8,7 +8,7 @@ metadata:
     name: arbitrary-opportunity-microservice
     namespace: microservices
 spec:
-    replicas: 3
+    replicas: 4
     selector:
         matchLabels:
             run: arbitrary-opportunity-microservice
