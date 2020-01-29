@@ -8,7 +8,7 @@ metadata:
     name: perceived-withdrawal-microservice
     namespace: microservices
 spec:
-    replicas: 3
+    replicas: 5 
     selector:
         matchLabels:
             run: perceived-withdrawal-microservice
