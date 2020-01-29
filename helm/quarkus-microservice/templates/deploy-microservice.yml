@@ -10,7 +10,7 @@ metadata:
     name: {{.Release.Name}}-microservice
     namespace: microservices
 spec:
-    replicas: 3
+    replicas: {{.Values.replicas}}
     selector:
         matchLabels:
             run: {{.Release.Name}}-microservice
@@ -72,5 +72,3 @@ spec:
                         backend:
                             serviceName: {{.Release.Name}}-microservice-service
                             servicePort: 30201
-
-
