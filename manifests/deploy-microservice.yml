@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: teama-microservice
+        app: alien-bowler-microservice
         stack: frontend
         source: demo
-    name: teama-microservice
+    name: alien-bowler-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: teama-microservice
+            run: alien-bowler-microservice
     template:
         metadata:
             labels:
-                app: teama-microservice
-                run: teama-microservice
+                app: alien-bowler-microservice
+                run: alien-bowler-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
-                    name: teama-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/alien-bowler-microservice
+                    name: alien-bowler-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: teama-microservice-service
-    name: teama-microservice-service
+        app: alien-bowler-microservice-service
+    name: alien-bowler-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: teama-microservice
+        app: alien-bowler-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,15 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: teama-ingress
+    name: alien-bowler-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /teama(/|$)(.*)
+                    -   path: /alien-bowler(/|$)(.*)
                         backend:
-                            serviceName: teama-microservice-service
+                            serviceName: alien-bowler-microservice-service
                             servicePort: 30201
 
 
