@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: teama-microservice
+        app: seasonal-cult-microservice
         stack: frontend
         source: demo
-    name: teama-microservice
+    name: seasonal-cult-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: teama-microservice
+            run: seasonal-cult-microservice
     template:
         metadata:
             labels:
-                app: teama-microservice
-                run: teama-microservice
+                app: seasonal-cult-microservice
+                run: seasonal-cult-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/teama-microservice
-                    name: teama-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/seasonal-cult-microservice
+                    name: seasonal-cult-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: teama-microservice-service
-    name: teama-microservice-service
+        app: seasonal-cult-microservice-service
+    name: seasonal-cult-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: teama-microservice
+        app: seasonal-cult-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,15 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: teama-ingress
+    name: seasonal-cult-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /teama(/|$)(.*)
+                    -   path: /seasonal-cult(/|$)(.*)
                         backend:
-                            serviceName: teama-microservice-service
+                            serviceName: seasonal-cult-microservice-service
                             servicePort: 30201
 
 
