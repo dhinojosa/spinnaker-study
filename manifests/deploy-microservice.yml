@@ -51,7 +51,7 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: mild-temper-ingress
+    name: grey-brown-ingress
     namespace: microservices
 spec:
     rules:
