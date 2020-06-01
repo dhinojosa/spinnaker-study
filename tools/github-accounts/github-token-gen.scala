@@ -3,8 +3,6 @@ val names = Map(
 )
 
 names.foreach{case (k,v) =>
-  println(s"echo \'$v\' >> ~/${k}-token-file.txt")
-  println(s"TOKEN_FILE=~/${k}-token-file.txt")
-  println(s"ARTIFACT_ACCOUNT_NAME=${k}-account")
-  println("hal config artifact github account add $ARTIFACT_ACCOUNT_NAME --token-file $TOKEN_FILE")
+  println(s"- name: $k")
+  println(s"  token: $v")
 }
