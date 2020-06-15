@@ -7,3 +7,4 @@ manifests/.deploy-microservice.yml.swp
 tools/terraform/plan.out
 tools/terraform/terraform.tfstate
 tools/terraform/terraform.tfstate.backup
+tools/terraform/.terraform/
