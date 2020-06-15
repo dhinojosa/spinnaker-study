@@ -36,7 +36,8 @@ public class PrimeNumberChecker {
         if (number % 2 == 0) {
             return number + " is not prime, it is divisible by 2.";
         }
-        
+
+
         for (int i = 3; i < Math.floor(Math.sqrt(number)) + 1; i = i + 2) {
             if (number % i == 0) {
                 return number + " is not prime, is divisible by " + i + ".";
