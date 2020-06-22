@@ -57,7 +57,7 @@ spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /ken-solo(/|$)(.*)
                         backend:
                             serviceName: ken-solo-microservice-service
                             servicePort: 30201
