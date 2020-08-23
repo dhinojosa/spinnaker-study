@@ -13,7 +13,7 @@ node {
        archiveArtifacts artifacts: 'quarkus-microservice-chart.tar.gz', fingerprint: true
 	}
 	stage('Push chart to S3') {
-	    withAWS(region:'us-east-2', credentials:'spinnaker-admin-aws') {
+	    withAWS(region:'us-east-2', credentials:'mike-aws') {
           s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'helm-charts-658e5f4d-3bd7-4ff6-b46f-67fc92881c14', path:"${JOB_NAME}/${BUILD_ID}/quarkus-microservice-chart.tar.gz")
         }
 	}
@@ -24,7 +24,7 @@ node {
 	    archiveArtifacts artifacts: 'spinnaker.properties', fingerprint: true
 	}
 	stage('Push to ECR') {
-		docker.withRegistry('https://633102329196.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:spinnaker-admin-aws') {
+		docker.withRegistry('https://633102329196.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:mike-aws') {
 			docker.image('${JOB_NAME}').push('${BUILD_ID}')
 	   }
 	}
