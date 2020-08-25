@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: RedInclusion-microservice
+        app: red-inclusion-microservice
         stack: frontend
         source: demo
-    name: RedInclusion-microservice
+    name: red-inclusion-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: RedInclusion-microservice
+            run: red-inclusion-microservice
     template:
         metadata:
             labels:
-                app: RedInclusion-microservice
-                run: RedInclusion-microservice
+                app: red-inclusion-microservice
+                run: red-inclusion-microservice
                 source: demo
         spec:
             containers:
-                -   image: 633102329196.dkr.ecr.us-east-2.amazonaws.com/RedInclusion-microservice
-                    name: RedInclusion-microservice
+                -   image: 633102329196.dkr.ecr.us-east-2.amazonaws.com/red-inclusion-microservice
+                    name: red-inclusion-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: RedInclusion-microservice-service
-    name: RedInclusion-microservice-service
+        app: red-inclusion-microservice-service
+    name: red-inclusion-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: RedInclusion-microservice
+        app: red-inclusion-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,7 +51,7 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: RedInclusion-ingress
+    name: red-inclusion-ingress
     namespace: microservices
 spec:
     rules:
@@ -59,7 +59,7 @@ spec:
                 paths:
                     -   path: /RedInclusion(/|$)(.*)
                         backend:
-                            serviceName: RedInclusion-microservice-service
+                            serviceName: red-inclusion-microservice-service
                             servicePort: 30201
 
 
