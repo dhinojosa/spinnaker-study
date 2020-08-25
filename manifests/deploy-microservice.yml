@@ -57,7 +57,7 @@ spec:
     rules:
         -   http:
                 paths:
-                    -   path: /RedInclusion(/|$)(.*)
+                    -   path: /red-inclusion(/|$)(.*)
                         backend:
                             serviceName: red-inclusion-microservice-service
                             servicePort: 30201
