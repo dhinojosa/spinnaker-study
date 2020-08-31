@@ -20,7 +20,7 @@ spec:
                 source: demo
         spec:
             containers:
-                -   image: 633102329196.dkr.ecr.us-east-2.amazonaws.com/mild-temper-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/mild-temper-microservice
                     name: mild-temper-microservice
                     ports:
                         -   name: web
