@@ -4,7 +4,7 @@
 
 releaseType: stable
 image: quarkus-microservice
-ecr: 219099013464.dkr.ecr.us-west-2.amazonaws.com/
+ecr: 219099013464.dkr.ecr.us-west-2.amazonaws.com
 #replicaCount: 1
 #
 #image:
