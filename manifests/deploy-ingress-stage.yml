@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$2
+    name: mild-temper-ingress
+    namespace: microservices
+spec:
+    rules:
+        -   host: stage.tiered-planet.net
+            http:
+                paths:
+                    -   path: /mild-temper(/|$)(.*)
+                        backend:
+                            serviceName: mild-temper-microservice-service
+                            servicePort: 30201
