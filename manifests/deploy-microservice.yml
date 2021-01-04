@@ -2,10 +2,10 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: mild-temper-microservice
+        app: sudhakar-solo-microservice
         stack: frontend
         source: demo
-    name: mild-temper-microservice
+    name: sudhakar-solo-microservice
     namespace: microservices
 spec:
     replicas: 3
@@ -15,13 +15,13 @@ spec:
     template:
         metadata:
             labels:
-                app: mild-temper-microservice
-                run: mild-temper-microservice
+                app: sudhakar-solo-microservice
+                run: sudhakar-solo-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/mild-temper-microservice
-                    name: mild-temper-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/sudhakar-solo-microservice
+                    name: sudhakar-solo-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: mild-temper-microservice-service
-    name: mild-temper-microservice-service
+        app: sudhakar-solo-microservice-service
+    name: sudhakar-solo-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: mild-temper-microservice
+        app: sudhakar-solo-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -59,7 +59,7 @@ spec:
                 paths:
                     -   path: /mild-temper(/|$)(.*)
                         backend:
-                            serviceName: mild-temper-microservice-service
+                            serviceName: sudhakar-solo-microservice-service
                             servicePort: 30201
 
 
