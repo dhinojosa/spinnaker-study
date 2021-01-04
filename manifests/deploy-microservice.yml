@@ -11,7 +11,8 @@ spec:
     replicas: 3
     selector:
         matchLabels:
-            run: mild-temper-microservice
+            run: sudhakar-solo-microservice
+            
     template:
         metadata:
             labels:
@@ -51,13 +52,13 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: mild-temper-ingress
+    name: sudhakar-solo-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /sudhakar-solo(/|$)(.*)
                         backend:
                             serviceName: sudhakar-solo-microservice-service
                             servicePort: 30201
