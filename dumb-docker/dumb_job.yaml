@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: dumb-job-job
+    namespace: microservices
+spec:
+    template:
+        metadata:
+            namespace: microservices
+        spec:
+            containers:
+                -   name: clown-parade
+                    image: dhinojosa/dumb_job
+            restartPolicy: Never
+    backoffLimit: 4
