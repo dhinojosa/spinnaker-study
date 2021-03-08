@@ -9,7 +9,7 @@ spec:
             namespace: microservices
         spec:
             containers:
-                -   name: run-terraform-rds
+                -   name: terraform-rds
                     image: dhinojosa/terraform-rds
                     env:
                         -   name: AWS_ACCESS_KEY_ID
