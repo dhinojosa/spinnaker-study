@@ -4,6 +4,8 @@ metadata:
     name: run-terraform-rds
 spec:
     template:
+        metadata:
+            namespace: microservices
         spec:
             containers:
                 -   name: run-terraform-rds
