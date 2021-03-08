@@ -32,8 +32,14 @@ output "db_username" {
 
 output "db_secret" {
   value       = aws_db_instance.microservice-db.password
-  description = "password for the instance"
+  description = "secret for the instance"
 }
+
+output "db_address" {
+  value       = aws_db_instance.microservice-db.address
+  description = "address for the instance"
+}
+
 #
 #resource "aws_s3_bucket" "terraform_state" {
 #  bucket = "${team_name}-terraform-state"
