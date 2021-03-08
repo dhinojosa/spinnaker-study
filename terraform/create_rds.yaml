@@ -7,7 +7,7 @@ spec:
         spec:
             containers:
                 -   name: run-terraform-rds
-                    image: dhinojosa/run-terraform-rds
+                    image: dhinojosa/terraform-rds
                     env:
                         -   name: AWS_ACCESS_KEY_ID
                             valueFrom:
@@ -20,6 +20,6 @@ spec:
                                     name: aws-terraform-cred
                                     key: AWS_SECRET_ACCESS_KEY
                         -   name: TF_VAR_team_name
-                            value: spicy-potato
+                            value: mild-temper
             restartPolicy: Never
     backoffLimit: 4
