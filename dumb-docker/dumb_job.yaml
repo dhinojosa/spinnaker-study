@@ -10,6 +10,6 @@ spec:
         spec:
             containers:
                 -   name: clown-parade
-                    image: dhinojosa/dumb_job
+                    image: dhinojosa/dumb-job
             restartPolicy: Never
     backoffLimit: 4
