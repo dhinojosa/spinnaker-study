@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
     name: run-terraform-rds
+    namespace: microservices
 spec:
     template:
         metadata:
