@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: run-terraform-rds
+spec:
+    template:
+        spec:
+            containers:
+                -   name: run-terraform-rds
+                    image: dhinojosa/run-terraform-rds
+                    env:
+                        -   name: AWS_ACCESS_KEY_ID
+                            valueFrom:
+                                secretKeyRef:
+                                    name: aws-terraform-cred
+                                    key: AWS_ACCESS_KEY_ID
+                        -   name: AWS_SECRET_ACCESS_KEY
+                            valueFrom:
+                                secretKeyRef:
+                                    name: aws-terraform-cred
+                                    key: AWS_SECRET_ACCESS_KEY
+                        -   name: TF_VAR_team_name
+                            value: spicy-potato
+            restartPolicy: Never
+    backoffLimit: 4
