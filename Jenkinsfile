@@ -4,6 +4,7 @@ node {
 	}
 	stage('Build Project') {
       sh './mvnw clean package'
+      archiveArtifacts artifacts: 'spinnaker-study_1.0~SNAPSHOT_all.deb'
 	}
 	stage('Build Container') {
 		docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
