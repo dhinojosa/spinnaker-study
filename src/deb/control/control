@@ -1,0 +1,8 @@
+Package: [[name]]
+Version: [[version]]
+Section: misc
+Priority: low
+Architecture: all
+Description: [[description]]
+Maintainer: dhinojosa@evolutionnext.com
+Depends: default-jre | openjdk-11-jre
