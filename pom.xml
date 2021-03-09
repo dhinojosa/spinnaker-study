@@ -82,6 +82,22 @@
                         <goals>
                             <goal>jdeb</goal>
                         </goals>
+                        <configuration>
+                            <controlDir>${basedir}/src/deb/control</controlDir>
+                            <dataSet>
+                                <data>
+                                    <src>${project.build.directory}/${project.build.finalName}.jar</src>
+                                    <type>file</type>
+                                    <mapper>
+                                        <type>perm</type>
+                                        <prefix>/usr/share/jdeb/lib</prefix>
+                                        <user>loader</user>
+                                        <group>loader</group>
+                                        <filemode>640</filemode>
+                                    </mapper>
+                                </data>
+                            </dataSet>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
