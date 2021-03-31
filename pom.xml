@@ -11,8 +11,8 @@
         <quarkus.version>1.1.1.Final</quarkus.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -86,14 +86,21 @@
                             <controlDir>${basedir}/src/deb/control</controlDir>
                             <dataSet>
                                 <data>
-                                    <src>${project.build.directory}/${project.build.finalName}.jar</src>
+                                    <src>${project.build.directory}/${project.build.finalName}-runner.jar</src>
                                     <type>file</type>
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>/usr/share/jdeb/lib</prefix>
-                                        <user>loader</user>
-                                        <group>loader</group>
-                                        <filemode>640</filemode>
+                                        <prefix>/var/${project.build.finalName}</prefix>
+                                        <filemode>755</filemode>
+                                    </mapper>
+                                </data>
+                                <data>
+                                    <src>${basedir}/src/deb/init.d</src>
+                                    <type>directory</type>
+                                    <mapper>
+                                        <type>perm</type>
+                                        <prefix>/etc/init.d</prefix>
+                                        <filemode>775</filemode>
                                     </mapper>
                                 </data>
                             </dataSet>

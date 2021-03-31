@@ -1,8 +1,8 @@
-Package: [[name]]
-Version: [[version]]
+Package: quarkus_microservice
+Version: 1.0-SNAPSHOT
 Section: misc
-Priority: low
+Priority: optional
 Architecture: all
-Description: [[description]]
+Description: Application built by Quarkus
 Maintainer: dhinojosa@evolutionnext.com
-Depends: default-jre | openjdk-11-jre
+Depends: default-jre | openjdk-11-jre | procps
