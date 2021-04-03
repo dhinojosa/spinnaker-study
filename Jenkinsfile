@@ -20,7 +20,7 @@ node {
 	}
 	stage('Publish deb to aptly') {
 	    sh "tree ./target"
-	    sh "aptly repo add release ./target"
+	    sh "aptly repo add -force-replace release ./target"
 	    sh "aptly -architectures=i386,amd64 --gpg-key=\"Trial-Apt\" publish repo release s3:repo.tiered-planet.net:"
 	}
 	stage('Write properties') {
