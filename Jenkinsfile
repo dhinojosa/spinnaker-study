@@ -22,7 +22,7 @@ node {
 	    GPG_PASSPHRASE = credentials('gpg-passphrase')
 	    sh "tree ./target"
 	    sh "aptly repo add -force-replace release ./target"
-	    sh "aptly -architectures=i386,amd64 --gpg-key='Trial-Apt' -passphrase='$GPG_PASSPHRASE' publish repo release s3:repo.tiered-planet.net:"
+	    sh "aptly -architectures=i386,amd64 --skip-signing publish repo release s3:repo.tiered-planet.net:"
 	}
 	stage('Write properties') {
 	    sh "> spinnaker.properties"
