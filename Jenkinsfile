@@ -19,7 +19,7 @@ node {
         }
 	}
 	stage('Publish deb to aptly') {
-	    sh "GPG_PASSPHRASE=credentials('gpg-passphrase')"
+	    GPG_PASSPHRASE = credentials('gpg-passphrase')
 	    sh "tree ./target"
 	    sh "aptly repo add -force-replace release ./target"
 	    sh "aptly -architectures=i386,amd64 --gpg-key='Trial-Apt' -passphrase='$GPG_PASSPHRASE' publish repo release s3:repo.tiered-planet.net:"
