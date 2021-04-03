@@ -18,6 +18,10 @@ node {
           s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'helm-charts-f2bba284-98d3-445b-9f04-a08c57b7d36e', path:"${JOB_NAME}/${BUILD_ID}/quarkus-microservice-chart.tar.gz")
         }
 	}
+	stage('Publish deb to aptly') {
+	    sh "aptly repo add release target"
+	    sh "aptly -architectures=i386,amd64 --gpg-key="Admin" publish repo release s3:repo.tiered-planet.net:"
+	}
 	stage('Write properties') {
 	    sh "> spinnaker.properties"
 	    sh "echo 'JOB_NAME=${JOB_NAME}' >> spinnaker.properties"
