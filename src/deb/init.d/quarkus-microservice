@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SERVICE_NAME=spinnaker-study-1.0-SNAPSHOT
-PATH_TO_JAR=/var/$SERVICE_NAME/$SERVICE_NAME-runner.jar
+SERVICE_NAME=spinnaker-study
+PATH_TO_JAR="/var/$SERVICE_NAME/*.jar"
 START_SCRIPT="nohup java -jar $PATH_TO_JAR /tmp 2"
 PID_FILE=/tmp/$SERVICE_NAME-pid
 

@@ -84,7 +84,7 @@
                   <type>file</type>
                   <mapper>
                     <type>perm</type>
-                    <prefix>/var/${project.build.finalName}</prefix>
+                    <prefix>/var/${project.artifactId}</prefix>
                     <filemode>755</filemode>
                   </mapper>
                 </data>
