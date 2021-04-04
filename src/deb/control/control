@@ -1,5 +1,5 @@
-Package: quarkus_microservice
-Version: 1.0-SNAPSHOT
+Package: [[artifactId]]
+Version: [[version]]
 Section: misc
 Priority: optional
 Architecture: all
