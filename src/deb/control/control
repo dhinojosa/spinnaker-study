@@ -5,4 +5,4 @@ Priority: optional
 Architecture: all
 Description: Application built by Quarkus
 Maintainer: dhinojosa@evolutionnext.com
-Depends: openjdk-11-jre-headless , procps
+Depends: openjdk-11-jre-headless, procps
