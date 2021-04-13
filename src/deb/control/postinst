@@ -1,2 +1,3 @@
 #!/bin/sh
+service quarkus-microservice enable
 service quarkus-microservice start
