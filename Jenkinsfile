@@ -18,11 +18,9 @@ node {
           s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'helm-charts-f2bba284-98d3-445b-9f04-a08c57b7d36e', path:"${JOB_NAME}/${BUILD_ID}/quarkus-microservice-chart.tar.gz")
         }
 	}
-	stage('Publish deb to aptly') {
+	stage('Publish deb to Nexus') {
 	    GPG_PASSPHRASE = credentials('gpg-passphrase')
-	    sh "tree ./target"
-	    sh "aptly repo add -force-replace bionic ./target"
-	    sh "aptly -architectures=i386,amd64 --skip-signing -force-overwrite publish update bionic s3:repo.tiered-planet.net:"
+	    sh "curl -u "admin:${GPG_PASSPHRASE}" -H "Content-Type: multipart/form-data" --data-binary "@./target/spinnaker-study_1.16~SNAPSHOT_all.deb	" "http://54.191.13.62:8081/repository/mild-temper-microservice/""
 	}
 	stage('Write properties') {
 	    sh "> spinnaker.properties"
