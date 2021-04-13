@@ -20,7 +20,7 @@ node {
 	}
 	stage('Publish deb to Nexus') {
 	    GPG_PASSPHRASE = credentials('gpg-passphrase')
-	    sh "curl -u "admin:${GPG_PASSPHRASE}" -H "Content-Type: multipart/form-data" --data-binary "@./target/spinnaker-study_1.16~SNAPSHOT_all.deb	" "http://54.191.13.62:8081/repository/mild-temper-microservice/""
+	    sh "curl -u 'admin:${GPG_PASSPHRASE}' -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_1.16~SNAPSHOT_all.deb' 'http://54.191.13.62:8081/repository/mild-temper-microservice'"
 	}
 	stage('Write properties') {
 	    sh "> spinnaker.properties"
