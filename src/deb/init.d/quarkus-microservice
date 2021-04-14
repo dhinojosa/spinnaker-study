@@ -1,5 +1,14 @@
 #!/bin/bash
 
+### BEGIN INIT INFO
+# Provides:          quarkus-microservice
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Quarkus Microservice
+### END INIT INFO
+
 SERVICE_NAME=spinnaker-study
 PATH_TO_JAR="/var/$SERVICE_NAME/*.jar"
 START_SCRIPT="nohup java -jar $PATH_TO_JAR /tmp 2"
