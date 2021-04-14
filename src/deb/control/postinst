@@ -1,4 +1,5 @@
 #!/bin/sh
 echo "\033[36m HI I'M A POSTINST SCRIPT `date +"%s"` \033[39m"
-sudo systemctl start quarkus-microservice
+sudo update-rc.d quarkus-microservice defaults
+echo "\033[36m HI I'M A POSTINST SCRIPT AND DONE `date +"%s"` \033[39m"
 exit 0
