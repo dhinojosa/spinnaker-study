@@ -5,6 +5,7 @@ node {
 	stage('Build Project') {
       sh './mvnw clean package'
       archiveArtifacts artifacts: 'target/*.deb'
+      sh '${POM_VERSION}'
 	}
 	stage('Build Container') {
 		docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
