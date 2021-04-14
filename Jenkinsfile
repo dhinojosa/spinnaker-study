@@ -22,7 +22,7 @@ node {
 	stage('Publish deb to Nexus') {
 	   withCredentials([usernamePassword(credentialsId: 'nexus_passphrase', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_ADMIN')]) {
            sh "echo ${NEXUS_PASSWORD}"
-           sh "curl -u ${NEXUS_ADMIN}:${NEXUS_PASSWORD} -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_1.21~SNAPSHOT_all.deb' 'http://54.191.13.62:8081/repository/mild-temper-microservice/'"
+           sh "curl -u ${NEXUS_ADMIN}:${NEXUS_PASSWORD} -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_1.22~SNAPSHOT_all.deb' 'http://54.191.13.62:8081/repository/mild-temper-microservice/'"
        }
 	}
 	stage('Write properties') {

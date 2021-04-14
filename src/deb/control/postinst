@@ -1,6 +1,5 @@
 #!/bin/sh
 
 echo "\033[36m HI I'M A POSTINST SCRIPT `date +"%s"` \033[39m"
-sudo service quarkus-microservice enable
-sudo service quarkus-microservice start
+sudo chkconfig quarkus-microservice on
 exit 0
