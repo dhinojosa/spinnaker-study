@@ -19,10 +19,10 @@ node {
         }
 	}
 	stage('Publish deb to Nexus') {
-	    GPG_PASSPHRASE = credentials('gpg-passphrase')
-	    NEXUS_PASSPHRASE = credentials('nexus_passphrase')
-	    sh "echo '${NEXUS_PASSPHRASE}'"
-	    sh "curl -u 'admin:${NEXUS_PASSPHRASE}' -H 'Content-Type: multipart/form-data' -X PUT --data-binary '@./target/spinnaker-study_1.18~SNAPSHOT_all.deb' 'http://54.191.13.62:8081/repository/mild-temper-microservice/'"
+	   withCredentials([usernamePassword(credentialsId: 'nexus_passphrase', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_ADMIN')]) {
+           sh "echo '${NEXUS_PASSPHRASE}'"
+           	    sh "curl -u 'admin:${NEXUS_PASSWORD}' -H 'Content-Type: multipart/form-data' -X PUT --data-binary '@./target/spinnaker-study_1.18~SNAPSHOT_all.deb' 'http://54.191.13.62:8081/repository/mild-temper-microservice/'"
+       }
 	}
 	stage('Write properties') {
 	    sh "> spinnaker.properties"
