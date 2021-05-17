@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: mild-temper-microservice
+        app: drobles-solo
         stack: frontend
         source: demo
-    name: mild-temper-microservice
+    name: drobles-solo
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: mild-temper-microservice
+            run: drobles-solo
     template:
         metadata:
             labels:
-                app: mild-temper-microservice
-                run: mild-temper-microservice
+                app: drobles-solo
+                run: drobles-solo
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/mild-temper-microservice
-                    name: mild-temper-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/drobles-solo
+                    name: drobles-solo
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: mild-temper-microservice-service
-    name: mild-temper-microservice-service
+        app: drobles-solo-service
+    name: drobles-solo-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: mild-temper-microservice
+        app: drobles-solo
     ports:
         -   name: web
             protocol: TCP
@@ -59,7 +59,7 @@ spec:
                 paths:
                     -   path: /mild-temper(/|$)(.*)
                         backend:
-                            serviceName: mild-temper-microservice-service
+                            serviceName: drobles-solo-service
                             servicePort: 30201
 
 
