@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: drobles-solo
+        app: dennis-solo-microservice
         stack: frontend
         source: demo
-    name: drobles-solo
+    name: dennis-solo-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: drobles-solo
+            run: dennis-solo-microservice
     template:
         metadata:
             labels:
-                app: drobles-solo
-                run: drobles-solo
+                app: dennis-solo-microservice
+                run: dennis-solo-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/drobles-solo
-                    name: drobles-solo
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/dennis-solo-microservice
+                    name: dennis-solo-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: drobles-solo-service
-    name: drobles-solo-service
+        app: dennis-solo-microservice-service
+    name: dennis-solo-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: drobles-solo
+        app: dennis-solo-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,15 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: mild-temper-ingress
+    name: dennis-solo-microservice-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /dennis-solo-microservice(/|$)(.*)
                         backend:
-                            serviceName: drobles-solo-service
+                            serviceName: dennis-solo-microservice-service
                             servicePort: 30201
 
 
