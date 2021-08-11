@@ -12,6 +12,8 @@ spec:
     selector:
         matchLabels:
             run: mild-temper-microservice
+            strategy.spinnaker.io/max-version-history: '10'
+            traffic.spinnaker.io/load-balancers: '["service mild-temper-microservice-service"]'
     template:
         metadata:
             labels:
