@@ -5,7 +5,3 @@ COPY rds.tf /
 COPY run.sh /
 
 ENTRYPOINT ["/run.sh"]
-
-
-
-
