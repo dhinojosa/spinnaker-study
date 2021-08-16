@@ -17,8 +17,6 @@ spec:
             labels:
                 app: mild-temper-microservice
                 run: mild-temper-microservice
-                strategy.spinnaker.io/max-version-history: '10'
-                traffic.spinnaker.io/load-balancers: '[service mild-temper-microservice-service]'
                 source: demo
         spec:
             containers:
