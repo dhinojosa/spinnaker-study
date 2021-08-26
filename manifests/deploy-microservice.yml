@@ -57,7 +57,7 @@ spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /internal-code(/|$)(.*)
                         backend:
                             serviceName: internal-code-microservice-service
                             servicePort: 30201
