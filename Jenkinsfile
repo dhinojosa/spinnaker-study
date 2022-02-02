@@ -21,7 +21,7 @@ pipeline {
         stage('Build Container') {
             steps {
                 script {
-                    docker.build('mydockerimage', '-f src/main/docker/Dockerfile.jvm .')
+                    docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
                 }
             }
         }
