@@ -19,17 +19,23 @@ pipeline {
             }
         }
         stage('Build Container') {
-            docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
+            steps {
+                docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
+            }
         }
         stage('Write properties') {
-            sh "> spinnaker.properties"
-            sh "echo 'JOB_NAME=${JOB_NAME}' >> spinnaker.properties"
-            sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
-            archiveArtifacts artifacts: 'spinnaker.properties', fingerprint: true
+            steps {
+                sh "> spinnaker.properties"
+                sh "echo 'JOB_NAME=${JOB_NAME}' >> spinnaker.properties"
+                sh "echo 'BUILD_ID=${BUILD_ID}' >> spinnaker.properties"
+                archiveArtifacts artifacts: 'spinnaker.properties', fingerprint: true
+            }
         }
         stage('Push to ECR') {
-            docker.withRegistry('https://219099013464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:spinnaker-admin-aws') {
-                docker.image('${JOB_NAME}').push('${BUILD_ID}')
+            steps {
+                docker.withRegistry('https://219099013464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:spinnaker-admin-aws') {
+                    docker.image('${JOB_NAME}').push('${BUILD_ID}')
+                }
             }
         }
     }
