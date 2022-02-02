@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'maven-3.8.4'
-        jdk 'JDK 17'
+        jdk 'JDK 11'
     }
 
     stages {
@@ -21,7 +21,7 @@ pipeline {
         stage('Build Container') {
             steps {
                 script {
-                    docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
+                    docker.build('${env.JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
                 }
             }
         }
