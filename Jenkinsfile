@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'maven-3.8.4'
+        jdk 'JDK 17'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -9,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh './mvnw clean verify'
+                sh './mvnw clean package -DskipTests'
                 archiveArtifacts artifacts: 'target/*.deb'
                 sh '${POM_VERSION}'
             }

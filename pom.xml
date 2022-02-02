@@ -9,7 +9,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <quarkus.version>1.1.1.Final</quarkus.version>
+    <quarkus.version>2.6.3.Final</quarkus.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
   </properties>
   <dependencyManagement>
@@ -63,42 +63,6 @@
             <goals>
               <goal>build</goal>
             </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.vafer</groupId>
-        <artifactId>jdeb</artifactId>
-        <version>1.8</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>jdeb</goal>
-            </goals>
-            <configuration>
-              <controlDir>${basedir}/src/deb/control</controlDir>
-              <dataSet>
-                <data>
-                  <src>${project.build.directory}/${project.build.finalName}-runner.jar</src>
-                  <type>file</type>
-                  <mapper>
-                    <type>perm</type>
-                    <prefix>/var/${project.artifactId}</prefix>
-                    <filemode>755</filemode>
-                  </mapper>
-                </data>
-                <data>
-                  <src>${basedir}/src/deb/init.d</src>
-                  <type>directory</type>
-                  <mapper>
-                    <type>perm</type>
-                    <prefix>/etc/init.d</prefix>
-                    <filemode>775</filemode>
-                  </mapper>
-                </data>
-              </dataSet>
-            </configuration>
           </execution>
         </executions>
       </plugin>
