@@ -20,7 +20,9 @@ pipeline {
         }
         stage('Build Container') {
             steps {
-                docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
+                script {
+                    docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
+                }
             }
         }
         stage('Write properties') {
