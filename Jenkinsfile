@@ -21,7 +21,7 @@ pipeline {
         stage('Build Container') {
             steps {
                 script {
-                    docker.build('quarkus-app', '-f src/main/docker/Dockerfile.jvm .')
+                    docker.build('quarkusapp', '-f src/main/docker/Dockerfile.jvm .')
                 }
             }
         }
