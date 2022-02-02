@@ -14,14 +14,14 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh './mvnw clean package -DskipTests'
-                sh '${POM_VERSION}'
+                sh './mvnw clean package'
+//                sh '${POM_VERSION}'
             }
         }
         stage('Build Container') {
             steps {
                 script {
-                    docker.build('${JOB_NAME}', '-f src/main/docker/Dockerfile.jvm .')
+                    docker.build('mydockerimage', '-f src/main/docker/Dockerfile.jvm .')
                 }
             }
         }
