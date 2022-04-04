@@ -20,7 +20,7 @@ spec:
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/mild-temper-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/suman-solo-microservice
                     name: suman-solo-microservice
                     ports:
                         -   name: web
