@@ -25,6 +25,19 @@ pipeline {
                 }
             }
         }
+        stage('Create tar.gz') {
+            steps {
+               sh 'tar -czvf quarkus-microservice-chart.tar.gz -C helm quarkus-microservice'
+               archiveArtifacts artifacts: 'quarkus-microservice-chart.tar.gz', fingerprint: true
+            }
+        }
+	    stage('Push chart to S3') {
+            steps {
+	           withAWS(region:'us-west-2', credentials:'spinnaker-admin-aws') {
+                  s3Upload(file:'quarkus-microservice-chart.tar.gz', bucket:'helm-charts-f2bba284-98d3-445b-9f04-a08c57b7d36e', path:"${JOB_NAME}/${BUILD_ID}/quarkus-microservice-chart.tar.gz")
+               }
+            }
+        }        
         stage('Write properties') {
             steps {
                 sh "> spinnaker.properties"
