@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh './mvnw clean package'
-//                sh '${POM_VERSION}'
+                archiveArtifacts artifacts: 'target/*.deb'
             }
         }
         stage('Build Container') {
