@@ -85,7 +85,7 @@
                             <dataSet>
                                 <data>
                                     <src>
-                                        ${project.build.directory}/${project.build.finalName}-runner.jar
+                                        ${project.build.directory}/${project.build.finalName}.jar
                                     </src>
                                     <type>file</type>
                                     <mapper>
