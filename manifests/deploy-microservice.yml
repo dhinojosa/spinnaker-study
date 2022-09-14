@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: mild-temper-microservice
+        app: broad-music-microservice
         stack: frontend
         source: demo
-    name: mild-temper-microservice
+    name: broad-music-microservice
     namespace: microservices
 spec:
     replicas: 5
     selector:
         matchLabels:
-            run: mild-temper-microservice
+            run: broad-music-microservice
     template:
         metadata:
             labels:
-                app: mild-temper-microservice
-                run: mild-temper-microservice
+                app: broad-music-microservice
+                run: broad-music-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/mild-temper-microservice
-                    name: mild-temper-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/broad-music-microservice
+                    name: broad-music-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,14 +31,14 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: mild-temper-microservice-service
+        app: broad-music-microservice-service
         stack: frontend
-    name: mild-temper-microservice-service
+    name: broad-music-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: mild-temper-microservice
+        app: broad-music-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -54,15 +54,15 @@ metadata:
         stack: frontend
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: mild-temper-ingress
+    name: broad-music-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /broad-music(/|$)(.*)
                         backend:
-                            serviceName: mild-temper-microservice-service
+                            serviceName: broad-music-microservice-service
                             servicePort: 30201
 
 
