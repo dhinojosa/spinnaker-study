@@ -32,5 +32,7 @@ public class LoggingFilter implements ContainerRequestFilter {
                 
         LOG.infof("Request %s %s from IP %s", method, path, address);
         LOG.infof("Request %s %s from IP %s", method, path, address);
+        
+        LOG.infof("Request %s %s from IP %s", method, path, address);
     }
 }
