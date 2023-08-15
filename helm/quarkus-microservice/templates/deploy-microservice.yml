@@ -55,7 +55,7 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
     annotations:
@@ -63,12 +63,16 @@ metadata:
     name: {{.Release.Name}}-ingress
     namespace: microservices
 spec:
+    ingressClassName: nginx
     rules:
         -   http:
                 paths:
-                    -   path: /{{.Release.Name}}(/|$)(.*)
+                    - pathType: Prefix
+                      path: /{{.Release.Name}}(/|$)(.*)
                         backend:
-                            serviceName: {{.Release.Name}}-microservice-service
-                            servicePort: 30201
+                            service: 
+                                name: {{.Release.Name}}-microservice-service 
+                                port: 
+                                    number: 30201
 
 
