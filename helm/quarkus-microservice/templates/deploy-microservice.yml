@@ -69,7 +69,7 @@ spec:
                 paths:
                     - pathType: Prefix
                       path: /{{.Release.Name}}(/|$)(.*)
-                        backend:
+                      backend:
                             service: 
                                 name: {{.Release.Name}}-microservice-service 
                                 port: 
