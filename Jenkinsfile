@@ -47,10 +47,12 @@ pipeline {
             }
         }
 	stage('Publish deb to Nexus') {
-	   withCredentials([usernamePassword(credentialsId: 'nexus_passphrase', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_ADMIN')]) {
-           sh "echo ${NEXUS_PASSWORD}"
-           sh "curl -u ${NEXUS_ADMIN}:${NEXUS_PASSWORD} -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_${BUILD_ID}~SNAPSHOT_all.deb' 'http://nexus.tiered-planet.net/repository/${JOB_NAME}-spinnaker-study/'"
-        }    
+	   steps {	 
+	        withCredentials([usernamePassword(credentialsId: 'nexus_passphrase', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_ADMIN')]) {
+                sh "echo ${NEXUS_PASSWORD}"
+                sh "curl -u ${NEXUS_ADMIN}:${NEXUS_PASSWORD} -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_${BUILD_ID}~SNAPSHOT_all.deb' 'http://nexus.tiered-planet.net/repository/${JOB_NAME}-spinnaker-study/'"
+           }
+	}		   
         stage('Push to ECR') {
             steps {
                 script {
