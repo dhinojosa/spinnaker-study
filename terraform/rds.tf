@@ -13,7 +13,7 @@ resource "aws_db_instance" "microservice-db" {
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t3.micro"
-  name                 = "${replace(var.team-name, "-", "")}db"
+  db_name              = "${replace(var.team-name, "-", "")}db"
   username             = "admin"
   password             = "thermalsKeepMeWarm"
   parameter_group_name = "default.mysql5.7"
@@ -21,21 +21,21 @@ resource "aws_db_instance" "microservice-db" {
 }
 
 output "db_name" {
-  value       = aws_db_instance.microservice-db.name
+  value       = aws_db_instance.microservice-db.db_instance_name
   description = "Name of the instance"
 }
 
 output "db_username" {
-  value       = aws_db_instance.microservice-db.username
+  value       = aws_db_instance.microservice-db.db_instance_username
   description = "username for the instance"
 }
 
 output "db_secret" {
-  value       = aws_db_instance.microservice-db.password
+  value       = aws_db_instance.microservice-db.db_instance_password
   description = "secret for the instance"
 }
 
 output "db_address" {
-  value       = aws_db_instance.microservice-db.address
+  value       = aws_db_instance.microservice-db.db_instance_address
   description = "address for the instance"
 }
