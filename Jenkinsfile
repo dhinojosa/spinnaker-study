@@ -49,7 +49,7 @@ pipeline {
 	   stage('Publish deb to Nexus') {
 	       steps {
 	           withCredentials([usernamePassword(credentialsId: 'nexus_passphrase', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_ADMIN')]) {
-                   sh "curl -u ${NEXUS_ADMIN}:${NEXUS_PASSWORD} -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_${BUILD_ID}~SNAPSHOT_all.deb' 'https://nexus.tiered-planet.net/repository/${JOB_NAME}-spinnaker-study/'"
+                   sh "curl -u ${NEXUS_ADMIN}:${NEXUS_PASSWORD} -H 'Content-Type: multipart/form-data' --data-binary '@./target/spinnaker-study_${BUILD_ID}~SNAPSHOT_all.deb' 'https://nexus.tiered-planet.net/repository/mild-temper-spinnaker-study/'"
                }
            }
 	    }
