@@ -30,11 +30,6 @@ output "db_username" {
   description = "username for the instance"
 }
 
-output "db_secret" {
-  value       = aws_db_instance.microservice-db.db_instance_password
-  description = "secret for the instance"
-}
-
 output "db_address" {
   value       = aws_db_instance.microservice-db.db_instance_address
   description = "address for the instance"
