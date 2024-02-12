@@ -34,3 +34,9 @@ output "db_address" {
   value       = aws_db_instance.microservice-db.address
   description = "address for the instance"
 }
+
+output "db_secret" {
+  value       = aws_db_instance.microservice-db.password
+  sensitive   = true
+  description = "secret for the instance"
+}
