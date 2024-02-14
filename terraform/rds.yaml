@@ -22,7 +22,7 @@ spec:
                                 secretKeyRef:
                                     name: aws-terraform-cred
                                     key: AWS_SECRET_ACCESS_KEY
-                        -   name: TF_VAR_team_name
+                        -   name: TF_VAR_team-name
                             value: mild-temper
             restartPolicy: Never
     backoffLimit: 4
